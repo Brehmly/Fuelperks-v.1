@@ -9,6 +9,15 @@
 </body>
 </html>
 <script>
-var text = "My name is Adam Brehm, my ideal job title is whatever my boss pays me to be called, and my favorite number is 47";
-document.getElementById("text").innerHTML = text;
+function myFirstComponent(fn, ln, ag){
+  this.firstName = fn;
+  this.lastName = ln;
+  this.age = ag;
+}
+myFirstComponent.prototype.write = function() {
+  return "My name is " + this.firstName + " " + this.lastName + "  and I am " + this.age + " years old";
+};
+var dood = new myFirstComponent("dood","brodia","35");
+console.log("My name is " + dood.firstName + " " + dood.lastName + " and I am " + dood.age + " years old");
+document.getElementById("text").innerHTML = dood.write();
 </script>
