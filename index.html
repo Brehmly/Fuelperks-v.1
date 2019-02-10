@@ -1,96 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Title</title>
+<meta charset="utf-8">
+<title>
+Project 1
+</title>
 </head>
 <body>
+<script src = "javascript/index.js">
 
-<script>
-function Game(){
-
-  
-}
-function Player(score){
-  
-  
-  this.score = score;
-  this.scoreDiv = document.createElement("div");
-  this.scoreText = document.createElement("p");
-  this.scoreText.innerHTML = this.score;
-  var scoreButton = document.createElement("button");
-  var buttonText = document.createTextNode("Increase your score");
-  scoreButton.appendChild(buttonText);
-  //button.onclick = this.add();
-  var person = this;
-  scoreButton.addEventListener("click", function(){person.add()
-  });
-  this.scoreDiv.appendChild(scoreButton);
-  this.scoreDiv.appendChild(this.scoreText);
-  
-  
-  
-
-  
-  document.body.appendChild(this.scoreDiv);
-}
-
-Game.prototype.create = function(){
-  new Player(0);
-  
-
-  var divText = document.createElement("div");
-  var text = document.createTextNode("Player 1, click above to increase your score!");
-  divText.appendChild(text);
-  divText.style.height = "100px";
-  divText.style.color = "red";
-  document.body.appendChild(divText);
-
-  new Player(0);
-  
-  var divText = document.createElement("div");
-  var text = document.createTextNode("Player 2, click above to increase your score!");
-  divText.appendChild(text);
-  divText.style.height = "100px";
-  divText.style.color = "red";
-  document.body.appendChild(divText);
-
-  
-  
-  }
-
-Game.prototype.check = function(){
-  
-    alert("Player wins!")
-    location.reload();
-}
-Player.prototype.add = function(){
-  var game = new Game();
-  this.score = this.score+1;
-  this.scoreText.innerHTML = this.score;
-  console.log(this.score);
-  console.log("hello world");
-  if(this.score == 10){
-    console.log("The game should end here");
-    game.check();
-  }
-  
-}
-
-
-function myFunction() {
-  var game = new Game();
-  game.create();
-  var x = document.getElementById("hide");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
 </script>
-<div>
-<button id = "hide" onClick="myFunction()">Start game</button>
-</div>
+<button onclick = "game.check()">
+Test some stuff
+</button> 	
 </body>
 </html>
