@@ -75,11 +75,11 @@
             th6 = document.createElement("th");
             th6.innerHTML = 'Fuel Perks Amount';
             row1.appendChild(th6);
-            
+
             th5 = document.createElement("th");
             th5.innerHTML = 'Fuel Savings';
             row1.appendChild(th5);
-            
+
             let gAmount = document.getElementById('groceryAmount').value;
             let gallons = document.getElementById('gallons').value;
             let gTotal;
@@ -125,6 +125,9 @@
                 } else if(parseInt(document.getElementById('fuel' + j).innerHTML,10) > parseInt(document.getElementById(i).innerHTML,10)){
                     document.getElementById('fuel' + j).style.backgroundColor = "green";
                     document.getElementById(i).style.backgroundColor = "red";
+                } else {
+                  document.getElementById('fuel' + j).style.backgroundColor = 'blue';
+                  document.getElementById(i).style.backgroundColor = 'blue';
                 }
             }
         }
