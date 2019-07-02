@@ -1,17 +1,132 @@
-<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>
-Project 1
-</title>
-</head>
-<body>
-<script src = "javascript/index.js">
+    <header>
+        <body>
+            <h1>Fuel Perks Savings Calculator</h1>
+            <input id="groceryAmount">Grocery Amount</input><br>
+            <input id="gallons">Total Gallons</input><br>
+            <button onclick = "return compare()">Compare</button>
+        </body>
+    </header>
+    <script>
+        let tiers = [
+            {gTier1: 0.02, fTier: 0.1},
+            {gTier1: 0.04, fTier: 0.2},
+            {gTier1: 0.06, fTier: 0.3},
+            {gTier1: 0.08, fTier: 0.4},
+            {gTier1: 0.1, fTier: 0.5},
+            {gTier1: 0.12, fTier: 0.6},
+            {gTier1: 0.14, fTier: 0.7},
+            {gTier1: 0.16, fTier: 0.8},
+            {gTier1: 0.18, fTier: 0.9},
+            {gTier1: 0.2, fTier: 1},
+            {gTier1: 0.2, fTier: 1.1},
+            {gTier1: 0.2, fTier: 1.2},
+            {gTier1: 0.2, fTier: 1.3},
+            {gTier1: 0.2, fTier: 1.4},
+            {gTier1: 0.2, fTier: 1.5},
+            {gTier1: 0.2, fTier: 1.6},
+            {gTier1: 0.2, fTier: 1.7},
+            {gTier1: 0.2, fTier: 1.8},
+            {gTier1: 0.2, fTier: 1.9},
+            {gTier1: 0.2, fTier: 2},
+            {gTier1: 0.2, fTier: 2.1},
+            {gTier1: 0.2, fTier: 2.2},
+            {gTier1: 0.2, fTier: 2.3},
+            {gTier1: 0.2, fTier: 2.4},
+            {gTier1: 0.2, fTier: 2.5},
+            {gTier1: 0.2, fTier: 2.6},
+            {gTier1: 0.2, fTier: 2.7},
+            {gTier1: 0.2, fTier: 2.8},
+            {gTier1: 0.2, fTier: 2.9},
+            {gTier1: 0.2, fTier: 3}
+        ]
+        let savings = [];
+        compare = ()=>{
+            let test = document.getElementById('table');
+            console.log(test);
+            if(test === null){
+                createTable();
+            } else {
+                test.remove();
+                createTable();
+            }
+        }
+        createTable =()=>{
+            let table = document.createElement("table");
+            table.id = 'table';
+            let row1 = table.insertRow(0);
 
-</script>
-<button onclick = "game.check()">
-Check to see if your boxes match!
-</button>
-</body>
+            th = document.createElement("th");
+            th.innerHTML = 'Grocery Amount';
+            row1.appendChild(th);
+
+            th2 = document.createElement("th");
+            th2.innerHTML = 'Fuel Perks Amount';
+            row1.appendChild(th2);
+
+            th3 = document.createElement("th");
+            th3.innerHTML = 'Grocery Savings';
+            row1.appendChild(th3);
+
+            th4 = document.createElement("th");
+            th4.innerHTML = 'Total Gallons';
+            row1.appendChild(th4);
+
+            th6 = document.createElement("th");
+            th6.innerHTML = 'Fuel Perks Amount';
+            row1.appendChild(th6);
+            
+            th5 = document.createElement("th");
+            th5.innerHTML = 'Fuel Savings';
+            row1.appendChild(th5);
+            
+            let gAmount = document.getElementById('groceryAmount').value;
+            let gallons = document.getElementById('gallons').value;
+            let gTotal;
+            let fTotal;
+            let row;
+            let cell;
+            let j = 0;
+            for (let i = 0; i<tiers.length; i++){
+                j = j+1;
+                row = table.insertRow(i+1)
+                gTotal = tiers[i].gTier1 * gAmount;
+                fTotal = tiers[i].fTier * gallons;
+                cell = row.insertCell(0);
+                cell.innerHTML = gAmount + '    *';
+
+                cell = row.insertCell(1);
+                cell.innerHTML = tiers[i].gTier1 + '    = ';
+
+                cell = row.insertCell(2);
+                cell.id = i;
+                cell.innerHTML = gTotal;
+
+                cell = row.insertCell(3);
+                cell.innerHTML = gallons;
+
+                cell = row.insertCell(4);
+                cell.innerHTML = tiers[i].fTier;
+
+                cell = row.insertCell(5);
+                cell.id = 'fuel' + j;
+                cell.innerHTML = fTotal;
+            }
+            document.body.appendChild(table);
+            checkValue();
+        }
+        checkValue = ()=>{
+            let j = 0;
+            for(let i = 0; i < 30; i++){
+                j = j + 1;
+                if(parseInt(document.getElementById(i).innerHTML,10) > parseInt(document.getElementById('fuel' + j).innerHTML,10)){
+                    document.getElementById(i).style.backgroundColor = "green";
+                    document.getElementById('fuel' + j).style.backgroundColor = "red";
+                } else if(parseInt(document.getElementById('fuel' + j).innerHTML,10) > parseInt(document.getElementById(i).innerHTML,10)){
+                    document.getElementById('fuel' + j).style.backgroundColor = "green";
+                    document.getElementById(i).style.backgroundColor = "red";
+                }
+            }
+        }
+    </script>
 </html>
